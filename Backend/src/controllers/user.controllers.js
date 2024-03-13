@@ -1,4 +1,3 @@
-const {ApiError} = require("../utils/ApiError");
 const {UserModel} = require("../models/user.model")
 
 const generateToken = async (userId)=>{
@@ -32,7 +31,7 @@ const RegisterUser = async (userData)=>{
     }
 } 
 
-const LoginUser = async (LoginData, context)=>{
+const LoginUser = async (LoginData)=>{
     const {email, password} = LoginData;
 
     try {
@@ -54,6 +53,7 @@ const LoginUser = async (LoginData, context)=>{
         const loggedInUser = await UserModel.findById(existedUser._id).select(
             "-password"
         );
+        console.log(accessToken);
         const options = {
             httpOnly: true,
             secure: true,
@@ -64,7 +64,8 @@ const LoginUser = async (LoginData, context)=>{
     }
 }
 
-const passwordChange = async (req, res, next)=>{
+
+const passwordChange = async ()=>{
     try {
         
     } catch (error) {

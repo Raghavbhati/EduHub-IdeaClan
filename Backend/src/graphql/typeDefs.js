@@ -16,6 +16,8 @@ enum Role {
 type Course {
     id: ID!
     name: String!
+    description : String!
+    prerequisites : String!
     lectures: [Lecture]
 }
 
@@ -48,9 +50,8 @@ type Query {
 type Mutation {
     createUser(email: String!, name: String!, password: String!, role: Role!): User
     loginUser(email: String!,password: String!): User
-    changePassword(email: String!, password: String!) : User
     
-    createCourse(name: String!): Course
+    createCourse(name: String!, description: String!, prerequisites: String!): Course
     createLecture(title: String!, startTime: String!, endTime: String!, description: String, link: String!, assignmentLink: String): Lecture
     createDiscussion(message: String!, timestamp: String!): Discussion
 }
