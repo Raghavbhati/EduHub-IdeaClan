@@ -75,4 +75,30 @@ const deleteLecture = async (id)=>{
     }
 }
 
-module.exports = { createLecture, updateLecture, deleteLecture }
+const getSingleLecture = async (id)=>{
+    try {
+        const SingleLeacture = await LectureModel.findById(id);
+        if(!SingleLeacture){
+            throw new Error("Unable to find the leacture at the moment")
+        }
+
+        return SingleLeacture;
+    } catch (error) {
+        throw error
+    }
+}
+
+const getAllLecture = async ()=>{
+    try {
+        const Alllecture = await LectureModel.find();
+        if(!Alllecture){
+            throw new Error("Unable to find the course at the moment")
+        }
+
+        return Alllecture;
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { createLecture, updateLecture, deleteLecture, getSingleLecture, getAllLecture }

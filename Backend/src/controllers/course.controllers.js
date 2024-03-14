@@ -49,5 +49,30 @@ const updateCourse = async (data)=>{
     }
 }
 
+const getSingleCourse = async (id)=>{
+    try {
+        const course = await CourseModel.findById(id).populate("lectures");
+        if(!course){
+            throw new Error("Unable to find the course at the moment")
+        }
 
-module.exports = {createCourse, updateCourse, deleteCourse}
+        return course;
+    } catch (error) {
+        throw error
+    }
+}
+
+const getAllCourse = async ()=>{
+    try {
+        const courses = await CourseModel.find().populate("lectures");
+        if(!courses){
+            throw new Error("Unable to find the course at the moment")
+        }
+
+        return courses;
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = {createCourse, updateCourse, deleteCourse, getAllCourse, getSingleCourse}

@@ -13,10 +13,6 @@ const DiscussionSchema = new mongoose.Schema({
         type : String,
         required: true,
         trim: true
-    },
-    "timestamp" : {
-        type : Date,
-        required : true,
     }
 },{
     timestamps : true,

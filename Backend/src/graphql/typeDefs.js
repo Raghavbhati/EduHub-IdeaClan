@@ -28,7 +28,7 @@ type Course {
 
 type Lecture {
     id: ID!
-    course: Course!
+    course: ID!
     title: String!
     date: String!
     startTime: String!
@@ -44,7 +44,7 @@ type Lecture {
 type Discussion {
     id: ID!
     message: String!
-    timestamp: String!
+    lecture : String!
     user: User!
     createdAt: String
     updatedAt: String
@@ -53,19 +53,25 @@ type Discussion {
 type Query {
     users: [User]
     user(id: ID!): User
+
     courses: [Course]
     course(id: ID!): Course
+
     lectures: [Lecture]
     lecture(id: ID!): Lecture
+
     discussions: [Discussion]
     discussion(id: ID!): Discussion
 }
+
 
 type Mutation {
     createUser(email: String!, name: String!, password: String!, role: Role!): User
     loginUser(email: String!, password: String!): User
     passwordChange(id: ID!, oldPassword: String, newPassword: String): User
     deleteUser(id: ID!): User
+    enrollCourse(userId: ID!, courseId: ID!): User
+
 
     createCourse(name: String!, description: String!, prerequisites: String!): Course
     updateCourse(id: ID!, name: String, description: String, prerequisites: String): Course

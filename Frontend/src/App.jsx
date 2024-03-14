@@ -1,11 +1,10 @@
 import './App.css'
+import AllRoutes from './Routes/AllRoutes'
 
 function App() {
-  return (
-    <h1 className="font-semibold text-2xl underline text-text-red">
-      Hello world!
-    </h1>
-  )
+  return <div>
+     <AllRoutes/>
+  </div>
 }
 
 export default App
