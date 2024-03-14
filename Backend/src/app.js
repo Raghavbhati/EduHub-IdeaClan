@@ -14,7 +14,7 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   try {
-    res.send("API is Live, Check API Docs for more info");
+    res.send("API is Live, go to /graphql");
   } catch (error) {
     console.log("Server down, error occurred", error);
   }

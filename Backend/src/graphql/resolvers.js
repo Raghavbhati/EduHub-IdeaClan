@@ -21,7 +21,7 @@ const resolvers = {
         createUser: async (_, {email,name, password,role}) => {return await RegisterUser({email,name, password,role})},
         loginUser: async (_, {email, password})=> {return await LoginUser({email,password})},
         passwordChange: async (_, {id, oldPassword, newPassword}) => {return await passwordChange({id, oldPassword, newPassword})},
-        deleteUser: async (_, {id}) => {return await DeleteUser({id})},
+        deleteUser: async (_, {id}) => {return await DeleteUser(id)},
         enrollCourse: async (_, {userId, courseId}, context) => {
             if(context.user){
                 return await enrollCourse({userId, courseId})

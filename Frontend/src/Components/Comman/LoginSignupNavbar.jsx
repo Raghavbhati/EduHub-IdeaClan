@@ -6,7 +6,7 @@ const LoginSignupNavbar = ({ text, path, title }) => {
       <div className="w-10/12 m-auto">
         <div className="flex justify-between items-center">
           <div className="text-left">
-            <h2 className="font-bold text-2xl text-white">EduHub</h2>
+            <Link to={"/"}><h2 className="font-bold text-2xl text-white">EduHub</h2></Link>
           </div>
           <div className="text-right">
             <p className="text-white font-medium text-sm">

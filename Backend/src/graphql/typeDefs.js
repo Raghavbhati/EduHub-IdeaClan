@@ -4,16 +4,11 @@ type User {
     email: String!
     name: String
     password: String
-    role: Role!
+    role: String!
     courses: [Course]
     accessToken: String
     createdAt: String
     updatedAt: String
-}
-
-enum Role {
-    Admin
-    Student
 }
 
 type Course {
@@ -66,7 +61,7 @@ type Query {
 
 
 type Mutation {
-    createUser(email: String!, name: String!, password: String!, role: Role!): User
+    createUser(email: String!, name: String!, password: String!, role: String!): User
     loginUser(email: String!, password: String!): User
     passwordChange(id: ID!, oldPassword: String, newPassword: String): User
     deleteUser(id: ID!): User
