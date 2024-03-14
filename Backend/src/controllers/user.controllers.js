@@ -58,6 +58,7 @@ const LoginUser = async (LoginData)=>{
             httpOnly: true,
             secure: true,
         }
+        loggedInUser.accessToken = accessToken;
         return loggedInUser;
     } catch (error) {
         throw error;
@@ -65,23 +66,54 @@ const LoginUser = async (LoginData)=>{
 }
 
 
-const passwordChange = async ()=>{
+const passwordChange = async (data)=>{
+    const {id, oldPassword, newPassword} = data;
     try {
+        if(!oldPassword || !newPassword){
+            throw new Error("All fields are required, Please add all reqired infromastion");
+        }
+
+        const existedUser = await UserModel.findById(id);
+        if(!existedUser){
+            throw new Error("User not found");
+        }
+
+        const isPasswordCorrect = await existedUser.isPasswordCorrect(existedUser.email, oldPassword);
+        if(!isPasswordCorrect){
+            throw new Error("Incorrect old Password");
+        }
+
+        existedUser.password = newPassword;
+        await existedUser.save({validateBeforeSave: false})
+
+        const loggedInUser = await UserModel.findById(existedUser._id).select(
+            "-password"
+        );
+
+
+        const accessToken = await generateToken(loggedInUser._id);
+        loggedInUser.accessToken = accessToken;
+        return loggedInUser;
         
     } catch (error) {
         next(error)
     }
 }
 
-const getUserProfile = async (req, res, next)=>{
+const DeleteUser = async (id)=>{
     try {
-        
+        const deletedUser = await UserModel.findByIdAndDelete(id);
+        if(!deletedUser){
+            throw new Error("User not found");
+        }
+        return deletedUser;
     } catch (error) {
-        
+        throw error;
     }
 }
 
-const logoutUser = async (req, res, next)=>{
+
+const getUserProfile = async (req, res, next)=>{
     try {
         
     } catch (error) {
@@ -94,5 +126,5 @@ module.exports = {
     LoginUser,
     passwordChange,
     getUserProfile,
-    logoutUser
+    DeleteUser
 }

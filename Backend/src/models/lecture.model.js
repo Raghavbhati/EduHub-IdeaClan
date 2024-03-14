@@ -11,12 +11,12 @@ const LectureSchema = new mongoose.Schema({
         trim: true
     },
     "date": {
-        type: Date,
+        type: String,
         required: true,
         trim: true
     },
     "startTime": {
-        type: Date,
+        type: String,
         validate: [
             function(startTime) {
                 return this.date ? startTime !== undefined : true;
@@ -25,7 +25,7 @@ const LectureSchema = new mongoose.Schema({
         ]
     },
     "endTime": {
-        type: Date,
+        type: String,
         validate: [
             function(endTime) {
                 return this.date ? endTime !== undefined : true;
