@@ -88,13 +88,13 @@ Note: Only admins can perform certain actions such as creating, updating, and de
 Our frontend is designed to be intuitive and user-friendly. Here are some screenshots of our main pages:
 
 - Login Page:
-  ![Login Page](../Readme%20Images/Login.png)
+  ![Login Page](./ReadmeImages/Login.png)
 - Signup Page:
-  ![Signup Page](../Readme%20Images/Signup.png)
+  ![Signup Page](./ReadmeImages/Signup.png)
 - Dashboard:
-  ![Dashboard](../Readme%20Images/Dashboard.png)
+  ![Dashboard](./ReadmeImages/Dashboard.png)
 - Profile:
-  ![Profile](../Readme%20Images/Profile.png)
+  ![Profile](./ReadmeImages/Signup.png)
 
 
 ## Important links:
